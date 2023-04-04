@@ -1,0 +1,41 @@
+#DFS-method-1
+
+graph={
+    10:[20,40,50],
+    20:[10,50],
+    30:[40,50],
+    40:[10,20,30,50],
+    50:[10,40,50]
+}
+
+visited = set() # Set to keep track of visited nodes.
+
+def dfs(visited, graph, node):
+    if node not in visited:
+        print (node)
+        visited.add(node)
+        for neighbour in graph[node]:
+            dfs(visited, graph, neighbour)
+
+# Driver Code
+dfs(visited, graph,50)
+
+#DFS-method-2
+def dfs(graph,start,visited=None):
+    stack=[start]
+    if  visited==None:
+        visited=[]
+    visited.append(start)
+    print(start,end=" ")
+    for i in graph[start]:
+        if i not in visited:
+            visited.append(i)
+            dfs(graph,i,visited)
+graph={
+    10:[20,40,50],
+    20:[10,50],
+    30:[40,50],
+    40:[10,20,30,50],
+    50:[10,40,30]
+}
+dfs(graph,20)
